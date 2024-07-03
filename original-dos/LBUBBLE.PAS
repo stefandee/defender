@@ -1,0 +1,37 @@
+program link_flame;
+uses graph;
+type buffer=array[1..512] of byte;
+     sb=^buffer;
+var gd,gm,rd:integer;
+    f,d:file;
+    pass:sb;
+begin
+gd:=detect;
+initgraph(gd,gm,'c:\tp60\bgi');
+new(pass);
+assign(d,'c:\tp60\defender\bubbles.def');
+rewrite(d,512);
+assign(f,'c:\tp60\defender\bubble1.zpx');
+reset(f,512);
+blockread(f,pass^,1,rd);
+putimage(0,0,pass^,0);
+readln;
+blockwrite(d,pass^,1,rd);
+close(f);
+assign(f,'c:\tp60\defender\bubble2.zpx');
+reset(f,512);
+blockread(f,pass^,1,rd);
+putimage(0,0,pass^,0);
+readln;
+blockwrite(d,pass^,1,rd);
+close(f);
+assign(f,'c:\tp60\defender\bubble3.zpx');
+reset(f,512);
+blockread(f,pass^,1,rd);
+putimage(0,0,pass^,0);
+readln;
+blockwrite(d,pass^,1,rd);
+close(f);
+
+close(d);
+end.
